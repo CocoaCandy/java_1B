@@ -1,22 +1,64 @@
 void main() {
     Scanner keyboard = new Scanner(System.in);
-    int width; // 가로 길이
-    int height; // 세로길이
-    char type; // 사각형의 type(정, 직 사각형)
-    int area; // 면적
+    int num;
+    String result;
+    String result1;
+    char result2;
+    String result2_1;
+    String result3;
+    String result4;
+    char result5;
 
-    System.out.print("사각형의 가로 길이 입력(예 5) : ");
-    width = keyboard.nextInt();
-    System.out.print("사각형의 세로 길이 입력(예 5) : ");
-    height = keyboard.nextInt();
+    System.out.print("양의 정수를 입력");
+    num = keyboard.nextInt();
 
-    type = (width == height) ? '정' : '직';
-    area = width * height;
+    if (num % 2 == 0) {
+        result = String.format("%d는 짝수입니다.\n", num);
+        result1 = "짝";
+        result2 = '짝';
+    } else {
+        result = String.format("%d는 홀수입니다.\n", num);
+        result1 = "홀";
+        result2 = '홀';
+    }
 
-    System.out.printf("**** %c사각형 넓이 ******\n", type);
-    System.out.printf("\t가로 길이 : %,d Cm\n", width);
-    System.out.printf("\t세로 길이 : %,d Cm\n", height);
-    System.out.printf("\t넓    이 : %,d Cm\n", area);
+    switch (num % 2) {
+        case 1 :
+            result2_1 = "짝";
+            break;
+        default:
+            result2_1 = "";
+            break;
+        case 0 :
+            result2_1 = "홀";
+            break;
+
+    }
+
+    switch (num % 2) {
+        case 1 :
+            result2_1 = "짝";
+            break;
+        default:
+            result2_1 = "";
+            break;
+        case 0 :
+            result2_1 = "홀";
+            break;
+
+    }
+
+    result3 = (num % 2 == 0) ? String.format("%d는 짝수입니다.", num) :
+            String.format("%d는 홀수입니다.", num);
+    result4 = (num % 2 == 0) ? "짝" : "홀";
+    result5 = (num % 2 == 0) ? '짝' : '홀';
+
+    System.out.println(result);
+    System.out.printf("%d는 %s수 입니다.\n", num, result1);
+    System.out.printf("%d는 %s수 입니다.\n", num, result2);
+    System.out.println(result2_1);
+
+    System.out.println(result3);
 
 }
 
@@ -29,30 +71,29 @@ void main() {
 
 void main() {
     Scanner keyboard = new Scanner(System.in);
-    int price;    // 구입 가격
-    char grade; // 회원 등급
+    int num1, num2;
+    float result;
+    String message;
 
-    double discount;
+    System.out.printf("분자 입력");
+    num1 = keyboard.nextInt();
+    System.out.printf("분모 입력");
+    num2 = keyboard.nextInt();
 
-    String gradeTemp;
-    int discountRate;
+    result = (float) num1 / num2;
 
-    System.out.print("구입 가격 입력 : ");
-    price = keyboard.nextInt();
-    System.out.print("회원 등급 입력 (VIP, GOLD, SILVER, NONE) 예) V or v");
-    grade = keyboard.next().charAt(0);
+    if (num2 == 0) {
+        message = ("계산 불가");
+    } else {
+        message = String.format("%d / %d = %.2f\n", num1, num2, result);
+    }
 
-    gradeTemp = grade == 'V' ? "VIP" : (grade == 'G' ? "GOLD" : (grade == 'S' ? "SILVER" : "NONE"));
-    discountRate = grade == 'V' ? 20 : (grade == 'G' ? 15 : (grade == 'S' ? 10 : 0));
-
-    discount = price - price * ((double) discountRate/ 100);
-
-    System.out.printf("회원 등급 : %s (%d %% 할인)\n", gradeTemp, discountRate);
-    System.out.printf("구입 가격 : %,d 원\n", price);
-    System.out.printf("구입 가격 : %,d 원\n", (int) discount);
-    String result = price >= 100000 ? String.format("추가 할인 : %,d 원", (int) (discount -  (price * (price * (10.0 / 100))))) : "추가 할인 없음";
-    System.out.print(result);
+    System.out.println(message);
 }
+
+
+
+
 
 
 
@@ -63,26 +104,58 @@ void main() {
 
 void main() {
     Scanner keyboard = new Scanner(System.in);
-    int apple;
-    int pear;
-    int payment;
-    final int APPLE = 500;
-    final int PEAR = 600;
-    int price;
+    int score;
+    String result;
 
-    System.out.print("사과 구입 갯수 : ");
-    apple = keyboard.nextInt();
-    System.out.print("배 구입 갯수 : ");
-    pear = keyboard.nextInt();
-    System.out.print("지불금액 입력");
-    payment = keyboard.nextInt();
+    System.out.printf("정수 입력 : ");
+    score = keyboard.nextInt();
 
-    price = apple * APPLE + pear * PEAR;
+    /*****      program 1          ****/
 
-    String result = payment >= price ? String.format("거스름돈 : %,d 원", payment - price) : "금액이 부족합니다";
 
-    System.out.printf("구입 금액 : %,d 원\n", price);
-    System.out.printf("지불 금액 : %,d 원\n", payment);
+    if (score >= 90) {
+        result = "A학점 취득 성공";
+    } else {
+        result = "A학점 취득 실패";
+    }
+    result += "\n감사합니다.";
+
+    if (!(score >= 0 && score <= 100))
+        result = "ERROR : 점수는 0 ~ 100 사이";
+
+    System.out.println(result);
+
+    /*****      program 2          ****/
+
+    if (!(score >= 0 && score <= 100)) {
+        if (score >= 90) {
+            result = "A학점 취득 성공";
+        } else {
+            result = "A학점 취득 실패";
+        }
+        result += "\n감사합니다.";
+    } else {
+        result = "ERROR : 점수는 0 ~ 100 사이";
+    }
+
+    System.out.println(result);
+
+    /*****      program 3          ****/
+
+    if (!(score >= 0 && score <= 100)) {
+        switch (score / 90) {
+            case 0:
+                result = "A학점 취득 실패";
+                break;
+            case 1:
+                result = "A학점 취득 성공";
+                break;
+        }
+        result += "\n감사합니다.";
+    } else {
+        result = "ERROR : 점수는 0 ~ 100 사이";
+    }
+
     System.out.println(result);
 }
 
@@ -95,19 +168,42 @@ void main() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 void main() {
     Scanner keyboard = new Scanner(System.in);
-    int age;
+    int num1, num2, num3;
+    int result;
 
-    System.out.print("당신의 나이 ? ");
-    age = keyboard.nextInt();
+    System.out.print("정수 3개를 입력 : ");
+    num1 = keyboard.nextInt();
+    num2 = keyboard.nextInt();
+    num3 = keyboard.nextInt();
 
-    boolean flag = (age >= 0 && age < 120) ? true : false;
-    int charge = (age <= 7 || age >= 65) ? 0 : 5000;
+    if (num1 > num2) {
+        if (num1 > num3) {
+            result = num1;
+        } else {
+            result = num3;
+        }
+    } else if (num2 > num3) {
+        result = num2;
+    } else {
+        result = num3;
+    }
 
-    String result = flag == true ? String.format("나이 : %,d 살, 요금 : %,d 원", age, charge) : "Date(나이) 입력 오류";
-
-    System.out.println(result);
+    System.out.printf("%d, %d, %d 중에서 가장 큰 수는 %d 입니다.\n", num1, num2, num3, result);
 }
 
 
@@ -118,5 +214,113 @@ void main() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+void main() {
+    Scanner keyboard = new Scanner(System.in);
+    int salary;
+    int tax;
+    String message;
+
+    System.out.print("당신의 급여액 입력 : ");
+    salary  = keyboard.nextInt();
+
+    if (salary >= 0 && salary <= 30000000) {
+        if (salary < 2000000) {
+            tax = 0;
+        } else if (salary <= 4000000){
+            tax = (int) ((salary - 2000000) * (10.0f / 100));
+        } else if (salary <= 6000000) {
+            tax = (int) ((salary - 2000000) * (8.0f / 100));
+        } else if (salary <= 20000000) {
+            tax = (int) ((salary - 2000000) * (6.0f / 100));
+        } else {
+            tax = (int) ((salary - 2000000) * (5.0f / 100));
+        }
+        message = String.format("급여액 %,d원의 세금은 %,d 원 입니다.", salary, tax);
+    } else {
+        message = "ERROR : 급여액은 0 ~ 30,000,000 사이임";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void main() {
+    Scanner keyboard = new Scanner(System.in);
+    int man1, man2;
+    String man1result, man2result;
+    String result;
+
+
+    System.out.print("첫번째 선수 입력(가위 = 1, 바위 = 2, 보 = 3): ");
+    man1 = keyboard.nextInt();
+    System.out.print("두번째 선수 입력(가위 = 1, 바위 = 2, 보 = 3): ");
+    man2 = keyboard.nextInt();
+
+    if (man1 >= 1 && man1 <=3) {
+        man1result = "가위";
+    } else if (man1 == 2) {
+        man1result = "바위";
+    } else if (man1 == 3){
+        man1result = "보";
+    } else {
+        man1result = "";
+    }
+
+    if (man2 >= 1 && man2 <=3) {
+        man2result = "가위";
+    } else if (man2 == 2) {
+        man2result = "바위";
+    } else if (man2 == 3){
+        man2result = "보";
+    } else {
+        man2result = "";
+    }
+
+    if (!(man1result.equals("") || man2result.isEmpty())) {
+        switch (man1 - man2) {
+            case 0:
+                result = String.format("man1(%s)과 man2(%s)는 비겼습니다.", man1result, man2result);
+                break;
+            case -1:
+            case 2:
+                result = String.format("man1(%s)과 man2(%s)는 man2이 승리.", man1result, man2result);
+                break;
+            case 1:
+            case -1:
+                result = String.format("man1(%s)과 man2(%s)는 man1이 승리.", man1result, man2result);
+                break;
+            default:
+                result = "ERROR2";
+        }
+    } else {
+        result = "ERROR1";
+    }
+    System.out.println(result);
+}
 
 
