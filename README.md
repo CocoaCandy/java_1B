@@ -1,162 +1,58 @@
 void main() {
+    final int SIZE = 5;
     Scanner keyboard = new Scanner(System.in);
-    int num;
-    String result;
-    String result1;
-    char result2;
-    String result2_1;
-    String result3;
-    String result4;
-    char result5;
-
-    System.out.print("양의 정수를 입력");
-    num = keyboard.nextInt();
-
-    if (num % 2 == 0) {
-        result = String.format("%d는 짝수입니다.\n", num);
-        result1 = "짝";
-        result2 = '짝';
-    } else {
-        result = String.format("%d는 홀수입니다.\n", num);
-        result1 = "홀";
-        result2 = '홀';
-    }
-
-    switch (num % 2) {
-        case 1 :
-            result2_1 = "짝";
-            break;
-        default:
-            result2_1 = "";
-            break;
-        case 0 :
-            result2_1 = "홀";
-            break;
-
-    }
-
-    switch (num % 2) {
-        case 1 :
-            result2_1 = "짝";
-            break;
-        default:
-            result2_1 = "";
-            break;
-        case 0 :
-            result2_1 = "홀";
-            break;
-
-    }
-
-    result3 = (num % 2 == 0) ? String.format("%d는 짝수입니다.", num) :
-            String.format("%d는 홀수입니다.", num);
-    result4 = (num % 2 == 0) ? "짝" : "홀";
-    result5 = (num % 2 == 0) ? '짝' : '홀';
-
-    System.out.println(result);
-    System.out.printf("%d는 %s수 입니다.\n", num, result1);
-    System.out.printf("%d는 %s수 입니다.\n", num, result2);
-    System.out.println(result2_1);
-
-    System.out.println(result3);
-
-}
-
-
-
-
-
-
-
-
-void main() {
-    Scanner keyboard = new Scanner(System.in);
-    int num1, num2;
-    float result;
-    String message;
-
-    System.out.printf("분자 입력");
-    num1 = keyboard.nextInt();
-    System.out.printf("분모 입력");
-    num2 = keyboard.nextInt();
-
-    result = (float) num1 / num2;
-
-    if (num2 == 0) {
-        message = ("계산 불가");
-    } else {
-        message = String.format("%d / %d = %.2f\n", num1, num2, result);
-    }
-
-    System.out.println(message);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-void main() {
-    Scanner keyboard = new Scanner(System.in);
-    int score;
+    char answer;
     String result;
 
-    System.out.printf("정수 입력 : ");
-    score = keyboard.nextInt();
+    // for 문 사용
+    for (int i = 1; i <= 30; i++) { // 제어변수
 
-    /*****      program 1          ****/
+        System.out.printf("%d번 학생 출석 했나요? (yes/no)", i);
+        answer = keyboard.nextLine().charAt(0);
 
-
-    if (score >= 90) {
-        result = "A학점 취득 성공";
-    } else {
-        result = "A학점 취득 실패";
-    }
-    result += "\n감사합니다.";
-
-    if (!(score >= 0 && score <= 100))
-        result = "ERROR : 점수는 0 ~ 100 사이";
-
-    System.out.println(result);
-
-    /*****      program 2          ****/
-
-    if (!(score >= 0 && score <= 100)) {
-        if (score >= 90) {
-            result = "A학점 취득 성공";
+        if (answer == 'Y' || answer == 'y') {
+            result = "출석";
         } else {
-            result = "A학점 취득 실패";
+            result = "결석";
         }
-        result += "\n감사합니다.";
-    } else {
-        result = "ERROR : 점수는 0 ~ 100 사이";
+
+        System.out.printf("%d번 학생 -> %s/n", i, result);
     }
 
-    System.out.println(result);
+    // while
+    int j = 1;
+    while (j <= SIZE) {
+        System.out.printf("%d번 학생 출석 했나요? (yes/no)", j);
+        answer = keyboard.nextLine().charAt(0);
 
-    /*****      program 3          ****/
-
-    if (!(score >= 0 && score <= 100)) {
-        switch (score / 90) {
-            case 0:
-                result = "A학점 취득 실패";
-                break;
-            case 1:
-                result = "A학점 취득 성공";
-                break;
+        if (answer == 'Y' || answer == 'y') {
+            result = "출석";
+        } else {
+            result = "결석";
         }
-        result += "\n감사합니다.";
-    } else {
-        result = "ERROR : 점수는 0 ~ 100 사이";
+
+        result = (answer == 'Y' || answer == 'y') ? "출석" : "결석";
+
+        System.out.printf("%d번 학생 -> %s/n", j++, result);
     }
 
-    System.out.println(result);
+
+    // do~while()
+
+    int k = 1;
+    do {
+        System.out.printf("%d번 학생 출석 했나요? (yes/no)", k);
+        answer = keyboard.nextLine().charAt(0);
+
+        if (answer == 'Y' || answer == 'y') {
+            result = "출석";
+        } else {
+            result = "결석";
+        }
+
+        System.out.printf("%d번 학생 -> %s/n", k++, result);
+    } while (k <= SIZE);
+
 }
 
 
@@ -174,82 +70,29 @@ void main() {
 
 
 
-
-
-
-
-
-
-
 void main() {
-    Scanner keyboard = new Scanner(System.in);
-    int num1, num2, num3;
-    int result;
+    final int LINE = 5;
+    final int STAR = 23;
+    System.out.println("*+*+*+*+*+*+*+*+*+*+");
+    System.out.println("*+*+*+*+*+*+*+*+*+*+");
+    System.out.println("*+*+*+*+*+*+*+*+*+*+");
+    System.out.println("*+*+*+*+*+*+*+*+*+*+");
+    System.out.println("*+*+*+*+*+*+*+*+*+*+");
+    System.out.println();
 
-    System.out.print("정수 3개를 입력 : ");
-    num1 = keyboard.nextInt();
-    num2 = keyboard.nextInt();
-    num3 = keyboard.nextInt();
-
-    if (num1 > num2) {
-        if (num1 > num3) {
-            result = num1;
-        } else {
-            result = num3;
-        }
-    } else if (num2 > num3) {
-        result = num2;
-    } else {
-        result = num3;
+    for (int i = 0; i < LINE; i++) {
+        System.out.println("*+*+*+*+*+*+*+*+*+*+");
     }
 
-    System.out.printf("%d, %d, %d 중에서 가장 큰 수는 %d 입니다.\n", num1, num2, num3, result);
-}
+    System.out.println();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void main() {
-    Scanner keyboard = new Scanner(System.in);
-    int salary;
-    int tax;
-    String message;
-
-    System.out.print("당신의 급여액 입력 : ");
-    salary  = keyboard.nextInt();
-
-    if (salary >= 0 && salary <= 30000000) {
-        if (salary < 2000000) {
-            tax = 0;
-        } else if (salary <= 4000000){
-            tax = (int) ((salary - 2000000) * (10.0f / 100));
-        } else if (salary <= 6000000) {
-            tax = (int) ((salary - 2000000) * (8.0f / 100));
-        } else if (salary <= 20000000) {
-            tax = (int) ((salary - 2000000) * (6.0f / 100));
-        } else {
-            tax = (int) ((salary - 2000000) * (5.0f / 100));
+    for (int i = 0; i < LINE; i++) {
+        int j = 0;
+        while (j < STAR) {
+            System.out.print("*");
+            j++;
         }
-        message = String.format("급여액 %,d원의 세금은 %,d 원 입니다.", salary, tax);
-    } else {
-        message = "ERROR : 급여액은 0 ~ 30,000,000 사이임";
+        System.out.println();
     }
 }
 
@@ -263,64 +106,199 @@ void main() {
 
 
 
-
-
-
-
-
-
-void main() {
+void main() throws IOException {
     Scanner keyboard = new Scanner(System.in);
-    int man1, man2;
-    String man1result, man2result;
+    final int START = 1;
+    final int END = 100;
+    int total = 0;
+    int first, last;
     String result;
+    while (true);
+    char answer;
 
 
-    System.out.print("첫번째 선수 입력(가위 = 1, 바위 = 2, 보 = 3): ");
-    man1 = keyboard.nextInt();
-    System.out.print("두번째 선수 입력(가위 = 1, 바위 = 2, 보 = 3): ");
-    man2 = keyboard.nextInt();
+    // **************************************
 
-    if (man1 >= 1 && man1 <=3) {
-        man1result = "가위";
-    } else if (man1 == 2) {
-        man1result = "바위";
-    } else if (man1 == 3){
-        man1result = "보";
-    } else {
-        man1result = "";
+    for (int i = START; i <= END; i++) {
+        total += i;
     }
 
-    if (man2 >= 1 && man2 <=3) {
-        man2result = "가위";
-    } else if (man2 == 2) {
-        man2result = "바위";
-    } else if (man2 == 3){
-        man2result = "보";
-    } else {
-        man2result = "";
-    }
+    System.out.printf("%d + %d + .......+ %d + %d = %,d\n",
+            START, START +1, END -1, END, total);
 
-    if (!(man1result.equals("") || man2result.isEmpty())) {
-        switch (man1 - man2) {
-            case 0:
-                result = String.format("man1(%s)과 man2(%s)는 비겼습니다.", man1result, man2result);
-                break;
-            case -1:
-            case 2:
-                result = String.format("man1(%s)과 man2(%s)는 man2이 승리.", man1result, man2result);
-                break;
-            case 1:
-            case -1:
-                result = String.format("man1(%s)과 man2(%s)는 man1이 승리.", man1result, man2result);
-                break;
-            default:
-                result = "ERROR2";
+    // **************************************
+    total = 0;
+    while (true) {
+        total = 0;
+        System.out.println();
+
+        System.out.print("어디서부터 시작할까요?");
+        first = keyboard.nextInt();
+        System.out.print("어디까지 더할까요?");
+        last = keyboard.nextInt();
+        if (first <= last) {
+            break;
+        } else {
+            System.err.printf("ERROR : 시작 값 (%d)는 종료 값 (%d) 보다 작거나 같아야함", first, last);
+            System.in.read();
         }
-    } else {
-        result = "ERROR1";
+    }  // break 위치가 여기로
+
+    for (int j = first; j <= last; j++) {
+        total += j;
     }
+    if (first == last) {
+        result = String.format("%d = %d\n", first, total);
+    } else if (last - first <= 1) {
+        if (last - first == 1)
+            result = String.format("%d + %d = %d\n", first, last, total);
+     else if (last - first ==2)
+        result = String.format("%d + %d + %d = %d\n", first, first +1, last, total);
+     else
+        result = String.format("%d + %d + %d + %d = %d\n", first, first +1, last -1, last, total);
+    } else {
+        result = String.format("%d + %d + .......+ %d + %d = %,d\n",
+                first, first +1, last -1, last, total);
+    }
+
     System.out.println(result);
+    System.out.print("계속할까요? (Yes/No)");
+    keyboard.nextLine();
+    answer = keyboard.nextLine().charAt(0);
+    if (answer == 'N' || answer == 'n');
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void main() {
+    Scanner keyboard = new Scanner(System.in);
+    final int START = 1;
+    final int END = 100;
+    int total = 0;
+
+    // **************************************
+    total = 0;
+    for (int i = START; i <= END; i++) {
+        if (i % 3 == 0 && i % 5 != 0) {  // 3의 배수를 제외하면서 5의 배수인 경우는 더하는경우
+            continue;
+        }
+        total += i;
+    /* continue */}
+
+    System.out.printf("%d + %d + .......+ %d + %d = %,d\n",
+            START, START +1, END -1, END, total);
+
+    // **************************************
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+void main() throws IOException {
+    Scanner keyboard = new Scanner(System.in);
+    int start;
+    int last;
+    int odd = 0;
+    int even = 0;
+    char answer;
+
+    do {
+        odd = 0;
+        even = 0;
+
+        while (true) {
+            System.out.print("어디부터 더할까요?");
+            start = keyboard.nextInt();
+            System.out.printf("어디까지 더할까요? (최솟값 : %d)", start + 5);
+            last = keyboard.nextInt();
+
+            if (last >= start + 5)
+                break;
+            else {
+                System.err.print("ERROR : 입력오류");
+                System.in.read();
+            }
+        }
+        for (int i = start; i <= last; i++) {
+            if (i % 2 == 0) {
+                even += i;
+            } else {
+                odd += i;
+            }
+        }
+
+        System.out.printf("%d ~ %d까지의 합 = %.d\n", start, last, even + odd);
+        System.out.printf("\t 짝수의 합 = %,d\n", even);
+        System.out.printf("\t 홀수의 합 = %,d\n", odd);
+
+        System.out.print("계속할까요? (Yes/No)");
+        keyboard.nextLine();
+        answer = keyboard.nextLine().charAt(0);
+        if (answer == 'N' || answer == 'n');
+            break;
+    } while (true);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+void main() {
+    final int START = 1;
+    final int TARGET = 100000000;
+    int total = 0;
+    int today = 1;
+
+    for (int i = START; true; i *= 2) {
+        total += i;
+
+        System.out.printf("오늘의 저축 금액 = %,9d 원, %3d 일 = %,11d 원\n", i, today,total);
+        today++;
+        if (total >= TARGET)
+            break;
+    }
+}
+
+
+
+
+
 
 
