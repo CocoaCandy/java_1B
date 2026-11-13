@@ -1,59 +1,86 @@
 void main() {
-    final int SIZE = 5;
-    Scanner keyboard = new Scanner(System.in);
-    char answer;
-    String result;
+    //int[] score;    // 선언
+    //score = new int[5]; //정의
 
-    // for 문 사용
-    for (int i = 1; i <= 30; i++) { // 제어변수
+    int a;  // 선언 + 정의
 
-        System.out.printf("%d번 학생 출석 했나요? (yes/no)", i);
-        answer = keyboard.nextLine().charAt(0);
+    /*
+    int[] score = new int[5]; // 선언 & 정의
+    score[0] = 95;  // 배열의 원소를 구분하는 index = 0
+    score[1] = 70;
+    score[2] = 80;
+    score[3] = 75;
+    score[4] = 100;
+    score[5] = 100;
 
-        if (answer == 'Y' || answer == 'y') {
-            result = "출석";
-        } else {
-            result = "결석";
-        }
+    int[] score = new int[] {95, 70, 80, 75, 100};
+    */
 
-        System.out.printf("%d번 학생 -> %s/n", i, result);
-    }
+    int[] score = {95, 70, 80, 75, 100};
+    int total = 0;
+    float avg;
 
-    // while
-    int j = 1;
-    while (j <= SIZE) {
-        System.out.printf("%d번 학생 출석 했나요? (yes/no)", j);
-        answer = keyboard.nextLine().charAt(0);
+    for (int i = 0; i < score.length; i++)
+        total += score[i];
+    avg = (float) total / score.length;
 
-        if (answer == 'Y' || answer == 'y') {
-            result = "출석";
-        } else {
-            result = "결석";
-        }
-
-        result = (answer == 'Y' || answer == 'y') ? "출석" : "결석";
-
-        System.out.printf("%d번 학생 -> %s/n", j++, result);
-    }
-
-
-    // do~while()
-
-    int k = 1;
-    do {
-        System.out.printf("%d번 학생 출석 했나요? (yes/no)", k);
-        answer = keyboard.nextLine().charAt(0);
-
-        if (answer == 'Y' || answer == 'y') {
-            result = "출석";
-        } else {
-            result = "결석";
-        }
-
-        System.out.printf("%d번 학생 -> %s/n", k++, result);
-    } while (k <= SIZE);
-
+    for (int i = 0; i < score.length; i++)
+        System.out.printf("%d\n", score[i]);
+    System.out.printf("총점 : %d\n", total);
+    System.out.printf("평균 : %.2f\n", avg);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void main() throws IOException {
+    Scanner keyboard = new Scanner(System.in);
+    String[] name = {"홍길동", "이대한", "한민국", "이미숙", "정자바"};
+    char[] attend = new char[name.length];
+    int count = 0;
+    float rate;
+    
+    int i = 0;
+    while (i < name.length) {
+        System.out.printf("%s님 출석했나요 ? (1/0)", name[i]);
+        attend[i] = keyboard.nextLine().charAt(0);
+        if (attend[i] != '0' && attend[i] != '1') {
+            System.err.print("ERROR : 출석 입력 0, 1");
+            System.in.read();
+        } else {
+            i++;
+        }
+        
+    }
+    for (i = 0; i < attend.length; i++) {
+        if (attend[i] == '0')
+            count++;
+    }
+
+    rate = ((float) count / attend.length) * 100.0f;
+
+    System.out.println();
+    for (i = 0; i <  name.length; i++) {
+        System.out.printf("%s님 %s\n", name[i], attend[i] == '1'?"출석" : "결석");
+    }
+    System.out.printf("결석생 수 : %d 명\n", count);
+    System.out.printf("결석율 : %.1f %%", rate);
+}
+
+
+
+
 
 
 
@@ -71,30 +98,40 @@ void main() {
 
 
 void main() {
-    final int LINE = 5;
-    final int STAR = 23;
-    System.out.println("*+*+*+*+*+*+*+*+*+*+");
-    System.out.println("*+*+*+*+*+*+*+*+*+*+");
-    System.out.println("*+*+*+*+*+*+*+*+*+*+");
-    System.out.println("*+*+*+*+*+*+*+*+*+*+");
-    System.out.println("*+*+*+*+*+*+*+*+*+*+");
-    System.out.println();
+    Scanner keyboard = new Scanner(System.in);
+    String source;
+    char[] reverse; // 선언
 
-    for (int i = 0; i < LINE; i++) {
-        System.out.println("*+*+*+*+*+*+*+*+*+*+");
+
+
+    System.out.print("영어 문장 입력 : ");
+    source = keyboard.nextLine();
+
+    reverse = new char[source.length()];
+    for (int i = 0; i < source.length(); i++) {
+        if (source.charAt(i) >= 'A' && source.charAt(i) <= 'Z')
+            reverse[i] = (char) (source.charAt(i) + 32);
+        else if (source.charAt(i) >= 'a' && source.charAt(i) <= 'z')
+            reverse[i] = (char) (source.charAt(i) - 32);
+        else
+            reverse[i] = source.charAt(i);
     }
 
-    System.out.println();
-
-    for (int i = 0; i < LINE; i++) {
-        int j = 0;
-        while (j < STAR) {
-            System.out.print("*");
-            j++;
-        }
-        System.out.println();
-    }
+    System.out.printf("원본 : %s\n", source);
+    System.out.printf("변경 : %s\n", new String(reverse));
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -108,64 +145,87 @@ void main() {
 
 void main() throws IOException {
     Scanner keyboard = new Scanner(System.in);
-    final int START = 1;
-    final int END = 100;
-    int total = 0;
-    int first, last;
-    String result;
-    while (true);
-    char answer;
 
+    String[] name = {"홍길동", "이해인", "김명성", "경복대", "이대학", "홍길동", "이해인", "김명성", "경복대", "이대학"};
+    int[] kor = {90, 87, 75, 100, 100, 90, 87, 75, 100, 100};
+    int[] math = {95, 90, 95, 99, 99, 95, 90, 95, 99, 99};
+    int[] eng = {90,88, 100, 100, 75, 90,88, 100, 100, 75};
 
-    // **************************************
+    int[] sum = new int[name.length];
+    float[] avg = new float[name.length];
+    int[] rank = new int[name.length];
 
-    for (int i = START; i <= END; i++) {
-        total += i;
-    }
+    int i = 0;
+    // Data
 
-    System.out.printf("%d + %d + .......+ %d + %d = %,d\n",
-            START, START +1, END -1, END, total);
+    while (i < name.length) {
+        System.out.printf("%s 학생의 국어, 수학, 영어 성적 입력 : ", name[i]);
+        kor[i] = keyboard.nextInt();
+        math[i] = keyboard.nextInt();
+        eng[i] = keyboard.nextInt();
 
-    // **************************************
-    total = 0;
-    while (true) {
-        total = 0;
-        System.out.println();
-
-        System.out.print("어디서부터 시작할까요?");
-        first = keyboard.nextInt();
-        System.out.print("어디까지 더할까요?");
-        last = keyboard.nextInt();
-        if (first <= last) {
-            break;
+        if ((kor[i] >= 0 && kor[i] <= 100) &&
+                (math[i] >= 0 && math[i] <= 100) &&
+                (eng[i] >= 0 && eng[i] <= 100)) {
+            i++;
         } else {
-            System.err.printf("ERROR : 시작 값 (%d)는 종료 값 (%d) 보다 작거나 같아야함", first, last);
+            System.err.println("ERROR : 점수는 0 ~ 100");
             System.in.read();
         }
-    }  // break 위치가 여기로
-
-    for (int j = first; j <= last; j++) {
-        total += j;
-    }
-    if (first == last) {
-        result = String.format("%d = %d\n", first, total);
-    } else if (last - first <= 1) {
-        if (last - first == 1)
-            result = String.format("%d + %d = %d\n", first, last, total);
-     else if (last - first ==2)
-        result = String.format("%d + %d + %d = %d\n", first, first +1, last, total);
-     else
-        result = String.format("%d + %d + %d + %d = %d\n", first, first +1, last -1, last, total);
-    } else {
-        result = String.format("%d + %d + .......+ %d + %d = %,d\n",
-                first, first +1, last -1, last, total);
     }
 
-    System.out.println(result);
-    System.out.print("계속할까요? (Yes/No)");
-    keyboard.nextLine();
-    answer = keyboard.nextLine().charAt(0);
-    if (answer == 'N' || answer == 'n');
+
+
+
+    for (i = 0; i < name.length; i++)
+        sum[i] = kor[i] + math[i] + eng[i];
+
+    // Sort
+
+    for (i = 0; i < name.length - 1; i++) {
+        for (int j = i + 1; j < name.length; j++)
+            if (sum[1] < sum[j]) {
+                String temp = name[i];
+                name[i] = name[j];
+                name[j] = temp;
+
+                int test = kor[i];
+                kor[i] = kor[j];
+                kor[j] = test;
+
+                test = eng[i];
+                eng[i] = eng[j];
+                eng[j] = test;
+
+                test = math[i];
+                math[i] = math[j];
+                math[j] = test;
+
+                test = sum[i];
+                sum[i] = sum[j];
+                sum[j] = test;
+            }
+
+    }
+
+    // 등수 부여
+    for (i = 0; i < name.length; i++)
+        avg[i] = sum[i] / 3.0f;
+
+    //동점자 처리
+    for (i = 0; i < name.length- 1; i++)
+        for (int j = i + 1; j < name.length; j++)
+            if (sum[i] == sum[j]) {
+                rank[j] = rank[i];
+            }
+
+    System.out.println("*******************************************");
+    System.out.println(" 이름  국어  수학  영어  총점    평균   등수");
+    System.out.println("*******************************************");
+
+    for (i = 0; i < name.length; i++) {
+        System.out.printf("%3s %3d %4d %4d %4d %8.2f %4d\n",
+                name[i], kor[i], math[i], eng[i], sum[i], avg[i], rank[i]);
     }
 }
 
@@ -188,29 +248,6 @@ void main() throws IOException {
 
 
 
-
-
-void main() {
-    Scanner keyboard = new Scanner(System.in);
-    final int START = 1;
-    final int END = 100;
-    int total = 0;
-
-    // **************************************
-    total = 0;
-    for (int i = START; i <= END; i++) {
-        if (i % 3 == 0 && i % 5 != 0) {  // 3의 배수를 제외하면서 5의 배수인 경우는 더하는경우
-            continue;
-        }
-        total += i;
-    /* continue */}
-
-    System.out.printf("%d + %d + .......+ %d + %d = %,d\n",
-            START, START +1, END -1, END, total);
-
-    // **************************************
-
-}
 
 
 
@@ -226,77 +263,82 @@ void main() {
 
 void main() throws IOException {
     Scanner keyboard = new Scanner(System.in);
-    int start;
-    int last;
-    int odd = 0;
-    int even = 0;
-    char answer;
 
-    do {
-        odd = 0;
-        even = 0;
+    String[] name = {"홍길동", "이해인", "김명성", "경복대", "이대학", "홍길동", "이해인", "김명성", "경복대", "이대학"};
+    int[] kor = {90, 87, 75, 100, 100, 90, 87, 75, 100, 100};
+    int[] math = {95, 90, 95, 99, 99, 95, 90, 95, 99, 99};
+    int[] eng = {90,88, 100, 100, 75, 90,88, 100, 100, 75};
 
-        while (true) {
-            System.out.print("어디부터 더할까요?");
-            start = keyboard.nextInt();
-            System.out.printf("어디까지 더할까요? (최솟값 : %d)", start + 5);
-            last = keyboard.nextInt();
+    int[] sum = new int[name.length];
+    float[] avg = new float[name.length];
+    int[] rank = new int[name.length];
 
-            if (last >= start + 5)
-                break;
-            else {
-                System.err.print("ERROR : 입력오류");
-                System.in.read();
-            }
+    int i = 0;
+    // Data 입력
+    /*
+    while (i < name.length) {
+        System.out.printf("%s 학생의 국어, 수학, 영어 성적 입력 : ", name[i]);
+        kor[i] = keyboard.nextInt();
+        math[i] = keyboard.nextInt();
+        eng[i] = keyboard.nextInt();
+
+        if ((kor[i] >= 0 && kor[i] <= 100) &&
+                (math[i] >= 0 && math[i] <= 100) &&
+                (eng[i] >= 0 && eng[i] <= 100)) {
+            i++;
+        } else {
+            System.err.println("ERROR : 점수는 0 ~ 100");
+            System.in.read();
         }
-        for (int i = start; i <= last; i++) {
-            if (i % 2 == 0) {
-                even += i;
-            } else {
-                odd += i;
+    }
+
+
+    */
+
+    for (i = 0; i < name.length; i++)
+        sum[i] = kor[i] + math[i] + eng[i];
+
+    /*
+    for (i = 0; i < name.length - 1; i++) {
+        for (int j = i + 1; j < name.length; j++)
+            if (sum[1] < sum[j]) {
+                String temp = name[i];
+                name[i] = name[j];
+                name[j] = temp;
+
+                int test = kor[i];
+                kor[i] = kor[j];
+                kor[j] = test;
+
+                test = eng[i];
+                eng[i] = eng[j];
+                eng[j] = test;
+
+                test = math[i];
+                math[i] = math[j];
+                math[j] = test;
+
+                test = sum[i];
+                sum[i] = sum[j];
+                sum[j] = test;
             }
-        }
 
-        System.out.printf("%d ~ %d까지의 합 = %.d\n", start, last, even + odd);
-        System.out.printf("\t 짝수의 합 = %,d\n", even);
-        System.out.printf("\t 홀수의 합 = %,d\n", odd);
+    }
 
-        System.out.print("계속할까요? (Yes/No)");
-        keyboard.nextLine();
-        answer = keyboard.nextLine().charAt(0);
-        if (answer == 'N' || answer == 'n');
-            break;
-    } while (true);
-}
+    */
 
+    for (i = 0; i < name.length; i++)
+        avg[i] = sum[i] / 3.0f;
 
+    System.out.println("*******************************************");
+    System.out.println(" 이름  국어  수학  영어  총점    평균   등수");
+    System.out.println("*******************************************");
 
-
-
-
-
-
-
-
-
-
-void main() {
-    final int START = 1;
-    final int TARGET = 100000000;
-    int total = 0;
-    int today = 1;
-
-    for (int i = START; true; i *= 2) {
-        total += i;
-
-        System.out.printf("오늘의 저축 금액 = %,9d 원, %3d 일 = %,11d 원\n", i, today,total);
-        today++;
-        if (total >= TARGET)
-            break;
+    for (i = 0; i < name.length; i++) {
+        System.out.printf("%3s %3d %4d %4d %4d %8.2f %4d\n",
+                name[i], kor[i], math[i], eng[i], sum[i], avg[i], rank[i]);
     }
 }
-
-
 
 
 
